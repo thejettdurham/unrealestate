@@ -52,7 +52,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    /* Changed from the default to ensure scheduled tasks fire at the right time without too much fuss */
+    'timezone' => 'America/New_York',
 
     /*
     |--------------------------------------------------------------------------
