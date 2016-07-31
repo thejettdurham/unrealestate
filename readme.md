@@ -1,27 +1,66 @@
-# Laravel PHP Framework
+# Unreal Estate
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Unreal Estate is a simple RESTful web app that allows the user to find Real Estate listings they might be interested in. Unreal Estate is built on Laravel 5 and PHP 7.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+## Listing Updates
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+The application maintains its own database of real estate listings. These listings are updated daily (2:00AM EST) from an external source.
 
-## Official Documentation
+## API Usage
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+There are two endpoints available for reading listing data, and one endpoint for modifying listing data.
 
-## Contributing
+### Get All Listings
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Retrieves all listings as an array of JSON objects
 
-## Security Vulnerabilities
+- **URL** `/listings`
+- **Method** `GET`
+- **Success Response**
+  - **Code**: 200
+  - **Content**: `{ [ { <Listing0> }, ... ] }`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+### Get Paginated Listings
 
-## License
+Retrieves a partial collection of all listings as an array of JSON objects. Sorting, filtering, and pagination is done via query parameters.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+- **URL** `/paginated_listings`
+- **Method** `GET`
+- **URL Parameters** _All parameters are optional, some have default values if not specified_
+
+| Parameter | Description | Allowed Values |  Default |
+| ----- | ------ | ------ | ------ |
+| page | specifies the page to show | any positive, non-zero integer | 1 |
+| results_per_page | specifies the number of results to show per page | any positive, non-zero integer | 10 |
+| photos_only | returns only photos from the listings | `true` or `false` | `false` |
+| sort | specifies how to sort the returned listings | [Sorting Expression](https://github.com/thejettdurham/unrealestate/wiki/Sorting-Expressions), only `ListPrice` and `ListingDate` fields | _none_ |
+
+_if no sorting is specified, no sorting will be explicitly applied and there are no guarantees what order the results will be in_
+
+- **Success Response**
+  - **Code**: 206
+  - **Content**: `{ [ { <Listing0> }, ... ] }`
+- **Error Responses**
+  - _Errors in URL parameters_
+    - **Code**: 400
+    - **Content**: `{ "error": "there was an error with the query parameters" }`
+  - _No data for given pagination parameters_
+    - **Code**: 404
+    - **Content**: _none_
+
+
+### Toggle Listing Activation
+
+Allows user to activate or deactivate a listing. The behavior of this endpoint is toggling, so calling the endpoint when the listing is inactive will activate it, and vice-versa.
+
+The endpoint also returns the representation of the affected listing as a JSON object.
+
+- **URL** `/listings/:id/toggle_activation`
+- **Method** `PUT`
+- **Success Response**
+  - **Code**: 201
+  - **Content**: `{ <Listing> }`
+- **Error Responses**
+  - _No Listing for id_
+    - **Code**: 404
+    - **Content**: _none_ 
