@@ -14,8 +14,8 @@ class PaginatedListingController extends Controller
     const DEFAULT_RESULTS_PER_PAGE=1;
     const SORTING_ASCENDING="asc";
     const SORTING_DESCENDING="desc";
-    // No input data has a listing_date field...
-    const ALLOWED_SORT_FIELDS= [ "list_price"];
+    // TODO: Implement other sortable fields
+    const ALLOWED_SORT_FIELDS= [ "list_price" ];
 
     /**
      * Transforms a sorting expression into an ordered associative array specifying sort order
