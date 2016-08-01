@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function() {
-   return view("Welcome to Unreal Estate");
+   return view("welcome");
 });
 
 Route::get('/listings', 'ListingController@GetAllListings');
