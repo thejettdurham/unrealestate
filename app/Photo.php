@@ -13,9 +13,6 @@ class Photo extends Model implements XmlDeserializable
 
     public $timestamps = false;
 
-    public $MediaModificationTimestamp;
-    public $MediaURL;
-
     /**
      * The deserialize method is called during xml parsing.
      *
@@ -43,13 +40,16 @@ class Photo extends Model implements XmlDeserializable
 
         $keyValues = Deserializer\keyValue($reader, self::SAMPLE_DATA_DEFAULT_NS);
 
-        foreach(array_keys($keyValues) as $key) {
-            $photo->$key = $keyValues[$key];
+        if (isset($keyValues['MediaModificationTimestamp'])) {
+            $keyValues['MediaModificationTimestamp'] = trim($keyValues['MediaModificationTimestamp']);
         }
 
-        if (isset($photo->MediaModificationTimestamp)) {
-            $photo->MediaModificationTimestamp = trim($photo->MediaModificationTimestamp);
+        foreach(array_keys($keyValues) as $key) {
+            $snakeKey=snake_case($key);
+            $photo->$snakeKey = $keyValues[$key];
         }
+
+
 
         return $photo;
     }

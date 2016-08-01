@@ -15,23 +15,6 @@ class Listing extends Model implements XmlDeserializable
 
     public $timestamps = false;
 
-    public $Address;
-    public $ListPrice;
-    public $ListingURL;
-    public $Bedrooms;
-    public $Bathrooms;
-    public $PropertyType;
-    public $ListingKey;
-    public $ListingCategory;
-    public $ListingIsActive;
-    public $Photos;
-    public $DiscloseAddress;
-    public $ListingDescription;
-    public $MlsId;
-    public $MlsName;
-    public $MlsNumber;
-
-
     public function address() {
         return $this->hasOne(Address::class);
     }
@@ -74,7 +57,8 @@ class Listing extends Model implements XmlDeserializable
         }
 
         foreach(array_keys($keyValues) as $key) {
-            $listing->$key = $keyValues[$key];
+            $snakeKey = snake_case($key);
+            $listing->$snakeKey = $keyValues[$key];
         }
 
         return $listing;

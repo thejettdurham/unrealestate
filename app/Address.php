@@ -13,12 +13,6 @@ class Address extends Model implements XmlDeserializable
 
     public $timestamps = false;
 
-    public $FullStreetAddress;
-    public $City;
-    public $StateOrProvince;
-    public $PostalCode;
-    public $Country;
-
     /**
      * The deserialize method is called during xml parsing.
      *
@@ -47,7 +41,8 @@ class Address extends Model implements XmlDeserializable
         $keyValues = Deserializer\keyValue($reader, self::SAMPLE_DATA_ADDRESS_NS);
 
         foreach(array_keys($keyValues) as $key) {
-            $address->$key = $keyValues[$key];
+            $snakeKey=snake_case($key);
+            $address->$snakeKey = $keyValues[$key];
         }
 
         return $address;
