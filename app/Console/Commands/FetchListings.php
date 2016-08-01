@@ -60,7 +60,7 @@ class FetchListings extends Command
         $this->UpsertListings($listings);
         //TODO: Remove listings in app's database but not in $listings(?)
 
-        echo "Fetching new listings successful";
+        echo "Fetching new listings successful" . PHP_EOL;
         exit(0);
 
     }

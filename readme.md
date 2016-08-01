@@ -31,9 +31,9 @@ Retrieves a partial collection of all listings as an array of JSON objects. Sort
 | Parameter | Description | Allowed Values |  Default |
 | ----- | ------ | ------ | ------ |
 | page | specifies the page to show | any positive, non-zero integer | 1 |
-| results_per_page | specifies the number of results to show per page | any positive, non-zero integer | 10 |
+| results_per_page | specifies the number of results to show per page | any positive, non-zero integer | 1 |
 | photos_only | returns only photos from the listings | `true` or `false` | `false` |
-| sort | specifies how to sort the returned listings | [Sorting Expression](https://github.com/thejettdurham/unrealestate/wiki/Sorting-Expressions), only `ListPrice` and `ListingDate` fields | _none_ |
+| sort | specifies how to sort the returned listings | [Sorting Expression](https://github.com/thejettdurham/unrealestate/wiki/Sorting-Expressions), only `list_price` and `listing_date` fields | _none_ |
 
 _if no sorting is specified, no sorting will be explicitly applied and there are no guarantees what order the results will be in_
 
