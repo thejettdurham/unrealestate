@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<Listings
+        xmlns:commons="http://rets.org/xsd/RETSCommons"
+        xmlns="http://rets.org/xsd/Syndication/2012-03"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:schemaLocation="http://rets.org/xsd/Syndication/2012-03/Syndication.xsd"
+        xml:lang="en-us">
+    <Listing>
+        <Address>
+            <commons:FullStreetAddress>2251 58 Street</commons:FullStreetAddress>
+            <commons:City>Vinton</commons:City>
+            <commons:StateOrProvince>IA</commons:StateOrProvince>
+            <commons:PostalCode>52349</commons:PostalCode>
+            <commons:Country>US</commons:Country>
+        </Address>
+        <ListPrice commons:isgSecurityClass="Public">154900</ListPrice>
+        <ListingURL>http://listings.listhub.net/pages/BCMLSIA/12777/?channel=passfail</ListingURL>
+        <Bedrooms>3</Bedrooms>
+        <Bathrooms>3</Bathrooms>
+        <PropertyType otherDescription="Residential">Residential</PropertyType>
+        <ListingKey>3yd-BCMLSIA-12777</ListingKey>
+        <ListingCategory>Purchase</ListingCategory>
+        <ListingStatus>Active</ListingStatus>
+        <Photos>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/1?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/2?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/3?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/4?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/5?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/6?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/7?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/8?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/9?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/10?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/11?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/12?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/13?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/14?lm=20160106T175645</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2016-01-06T17:56:45+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BCMLSIA/12777/15?lm=20160106T175645</MediaURL>
+            </Photo>
+        </Photos>
+        <ListingDescription>Excellent location and view. Multi level home with lots of space! Large masonry fireplace,
+            living room and family room. 2.26 acres gives you lots of room for your hobby farm project!
+        </ListingDescription>
+        <MlsId>BCMLSIA</MlsId>
+        <MlsName>Benton County Multiple Listing Service</MlsName>
+        <MlsNumber>12777</MlsNumber>
+    </Listing>
+    <Listing>
+        <Address>
+            <commons:FullStreetAddress>12071209 E WEBB AVENUE</commons:FullStreetAddress>
+            <commons:City>Burlington</commons:City>
+            <commons:StateOrProvince>NC</commons:StateOrProvince>
+            <commons:PostalCode>27215</commons:PostalCode>
+            <commons:Country>US</commons:Country>
+        </Address>
+        <ListPrice commons:isgSecurityClass="Public">125000</ListPrice>
+        <ListingURL>http://listings.listhub.net/pages/BABORNC/54149/?channel=passfail</ListingURL>
+        <Bedrooms>0</Bedrooms>
+        <Bathrooms>0</Bathrooms>
+        <PropertyType otherDescription="Commercial">Commercial</PropertyType>
+        <ListingKey>3yd-BABORNC-54149</ListingKey>
+        <ListingCategory>Purchase</ListingCategory>
+        <ListingStatus>Active</ListingStatus>
+        <Photos>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2013-11-13T21:26:38+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BABORNC/54149/1?lm=20131113T212638</MediaURL>
+            </Photo>
+        </Photos>
+        <DiscloseAddress>true</DiscloseAddress>
+        <ListingDescription>Possible Owner Financing. Property consists of 2 units which are being leased for
+            $600/unit.1 water
+            heater,1 gas meter,2 water meters,2 electrical main panels in basement,Shared parking.Basement not included
+            in
+            square footage. Storage. New 20 year roof on entire building and new a/c for 1207 installed 06/10.
+        </ListingDescription>
+        <MlsId>BABORNC</MlsId>
+        <MlsName>Burlington Alamance Board of Realtors</MlsName>
+        <MlsNumber>54149</MlsNumber>
+    </Listing>
+    <Listing>
+        <Address>
+            <commons:FullStreetAddress>0 UNIVERSITY DR</commons:FullStreetAddress>
+            <commons:City>Burlington</commons:City>
+            <commons:StateOrProvince>NC</commons:StateOrProvince>
+            <commons:PostalCode>27215</commons:PostalCode>
+            <commons:Country>US</commons:Country>
+        </Address>
+        <ListPrice commons:isgSecurityClass="Public">2600000</ListPrice>
+        <ListingURL>http://listings.listhub.net/pages/BABORNC/59140/?channel=passfail</ListingURL>
+        <Bedrooms>0</Bedrooms>
+        <Bathrooms>0</Bathrooms>
+        <PropertyType otherDescription="Vacant Land">Lots And Land</PropertyType>
+        <ListingKey>3yd-BABORNC-59140</ListingKey>
+        <ListingCategory>Purchase</ListingCategory>
+        <ListingStatus>Active</ListingStatus>
+        <Photos/>
+        <DiscloseAddress>true</DiscloseAddress>
+        <ListingDescription>Zoning allows for many commercial uses. Located on one of the 4 corners at University Dr.
+            &amp;
+            I-40/85 with great interstate access &amp; exposure. Near University Commons &amp; Alamance Crossing retail
+            centers.
+            Convenient to Elon Univ. and main entrance to the 600-acre Mackintosh on the Lake S/D.
+        </ListingDescription>
+        <MlsId>BABORNC</MlsId>
+        <MlsName>Burlington Alamance Board of Realtors</MlsName>
+        <MlsNumber>59140</MlsNumber>
+    </Listing>
+    <Listing>
+        <Address>
+            <commons:FullStreetAddress>225 S ELEVENTH</commons:FullStreetAddress>
+            <commons:City>Mebane</commons:City>
+            <commons:StateOrProvince>NC</commons:StateOrProvince>
+            <commons:PostalCode>27302</commons:PostalCode>
+            <commons:Country>US</commons:Country>
+        </Address>
+        <ListPrice commons:isgSecurityClass="Public">325000</ListPrice>
+        <ListingURL>http://listings.listhub.net/pages/BABORNC/66535/?channel=passfail</ListingURL>
+        <Bedrooms>0</Bedrooms>
+        <Bathrooms>0</Bathrooms>
+        <PropertyType otherDescription="Vacant Land">Lots And Land</PropertyType>
+        <ListingKey>3yd-BABORNC-66535</ListingKey>
+        <ListingCategory>Purchase</ListingCategory>
+        <ListingStatus>Active</ListingStatus>
+        <Photos>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2015-01-14T23:24:26+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BABORNC/66535/1?lm=20150114T232426</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2015-01-14T23:24:26+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BABORNC/66535/2?lm=20150114T232426</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2015-01-14T23:24:26+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BABORNC/66535/3?lm=20150114T232426</MediaURL>
+            </Photo>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2015-01-14T23:24:26+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BABORNC/66535/4?lm=20150114T232426</MediaURL>
+            </Photo>
+        </Photos>
+        <DiscloseAddress>true</DiscloseAddress>
+        <ListingDescription>Located just outside Mebane city limits but inside ETJ. Convenient to downtown Mebane &amp;
+            Tanger Outlets (1.2 miles), restaurants, grocery stores, healthcare &amp; pharmacies. Less than 2 miles to
+            I-40/85 access! Great location for multifamily or SFR development.
+        </ListingDescription>
+        <MlsId>BABORNC</MlsId>
+        <MlsName>Burlington Alamance Board of Realtors</MlsName>
+        <MlsNumber>66535</MlsNumber>
+    </Listing>
+    <Listing>
+        <Address>
+            <commons:FullStreetAddress>5510 FRIEDEN CHURCH ROAD</commons:FullStreetAddress>
+            <commons:City>McLeansville</commons:City>
+            <commons:StateOrProvince>NC</commons:StateOrProvince>
+            <commons:PostalCode>27301</commons:PostalCode>
+            <commons:Country>US</commons:Country>
+        </Address>
+        <ListPrice commons:isgSecurityClass="Public">199900</ListPrice>
+        <ListingURL>http://listings.listhub.net/pages/BABORNC/71218/?channel=passfail</ListingURL>
+        <Bedrooms>0</Bedrooms>
+        <Bathrooms>0</Bathrooms>
+        <PropertyType otherDescription="Vacant Land">Lots And Land</PropertyType>
+        <ListingKey>3yd-BABORNC-71218</ListingKey>
+        <ListingCategory>Purchase</ListingCategory>
+        <ListingStatus>Active</ListingStatus>
+        <Photos>
+            <Photo>
+                <MediaModificationTimestamp commons:isgSecurityClass="Public">2011-02-24T03:17:09+00:00
+                </MediaModificationTimestamp>
+                <MediaURL>http://photos.listhub.net/BABORNC/71218/1?lm=20110224T031709</MediaURL>
+            </Photo>
+        </Photos>
+        <DiscloseAddress>true</DiscloseAddress>
+        <ListingDescription>Great site for development. Lots of road frontage. Located across from shopping at a four
+            way intersection. There is a 1,344 sq. ft. former Post Office building also on the site. Septic tank does
+            not work.
+        </ListingDescription>
+        <MlsId>BABORNC</MlsId>
+        <MlsName>Burlington Alamance Board of Realtors</MlsName>
+        <MlsNumber>71218</MlsNumber>
+    </Listing>
+</Listings>
