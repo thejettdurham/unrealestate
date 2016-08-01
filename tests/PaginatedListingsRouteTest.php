@@ -21,7 +21,7 @@ class PaginatedListingsRouteTest extends TestCase
         $response = $this->get('/paginated_listings');
 
         $responseJson = $response->decodeResponseJson();
-        assertEquals(count($responseJson), 1);
+        $this->assertEquals(count($responseJson), 1);
         $response->seeStatusCode(206);
     }
 
@@ -35,7 +35,7 @@ class PaginatedListingsRouteTest extends TestCase
         $response = $this->get('/paginated_listings?page=1&results_per_page=3');
 
         $responseJson = $response->decodeResponseJson();
-        assertEquals(count($responseJson), 3);
+        $this->assertEquals(count($responseJson), 3);
         $response->seeStatusCode(206);
     }
 
@@ -50,8 +50,8 @@ class PaginatedListingsRouteTest extends TestCase
         $response = $this->get('/paginated_listings?page=1&results_per_page=5&sort=list_price.asc');
 
         $responseJson = $response->decodeResponseJson();
-        assertEquals(count($responseJson), 5);
-        assertEquals($responseJson[0]['list_price'], 125000);
+        $this->assertEquals(count($responseJson), 5);
+        $this->assertEquals($responseJson[0]['list_price'], 125000);
         $response->seeStatusCode(206);
     }
 
@@ -64,8 +64,14 @@ class PaginatedListingsRouteTest extends TestCase
          */
         $response = $this->get('/paginated_listings?page=1&results_per_page=3&photos_only=true');
 
-        $responseJson = $response->decodeResponseJson();
-        assertEquals(count($responseJson), 1);
+        $response->seeJson(["media_url" => "http://photos.listhub.net/BCMLSIA/12777/1?lm=20160106T175645"]);
+        $response->dontSeeJson(["listing_category" => "Residential"]);
         $response->seeStatusCode(206);
     }
+
+    //TODO: More tests
+    /**
+     * - Test query parameter validations and all possible returns
+     * - Test paginations resulting in empty data
+     */
 }

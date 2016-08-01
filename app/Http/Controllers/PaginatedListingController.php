@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
+
+//TODO Use custom exception instead of bubbling up error responses from sub-methods to controller entry point.
+//TODO Common method for returning a 400
 
 class PaginatedListingController extends Controller
 {
@@ -19,9 +23,10 @@ class PaginatedListingController extends Controller
 
     /**
      * Transforms a sorting expression into an ordered associative array specifying sort order
+     * Returns array if the sorting expression was okay, an HTTP response if there were errors.
      *
-     * @param string $key
-     * @return array
+     * @param string $expression
+     * @return mixed
      */
     private static function processSortingExpression(string $expression)
     {
@@ -58,6 +63,13 @@ class PaginatedListingController extends Controller
         return $parsedSortings;
     }
 
+    /**
+     * Process raw input query parameters, validates input, and ensures proper typing
+     * Returns array if successful, an HTTP response if there were errors
+     *
+     * @param array $rawQueryParams
+     * @return mixed
+     */
     private static function processIndexQueryParams(array $rawQueryParams) {
         $processedQueryParams = array();
 
@@ -84,7 +96,7 @@ class PaginatedListingController extends Controller
                     if ($rawQueryParams[$key] !== 'true' and  $rawQueryParams[$key] !== 'false') {
                         return response()->json([ "message" => "Invalid value '" . $rawQueryParams[$key] . "' for '" . $key . "'"])->setStatusCode(400);
                     }
-                    $processedQueryParams[$key] = (boolean) $rawQueryParams[$key];
+                    $processedQueryParams[$key] = filter_var($rawQueryParams[$key], FILTER_VALIDATE_BOOLEAN);
                     break;
 
                 default:
@@ -96,8 +108,9 @@ class PaginatedListingController extends Controller
         return $processedQueryParams;
     }
 
-    public function index(Request $request) {
-        $processedQueryParams = self::processIndexQueryParams(Input::all());
+    public function index() {
+        $rawQueryParams = Input::all();
+        $processedQueryParams = self::processIndexQueryParams($rawQueryParams);
 
         // This will either be a proper array or a response object that needs to be bubbled up
         if (!is_array($processedQueryParams)) {
@@ -112,14 +125,20 @@ class PaginatedListingController extends Controller
         }
 
         $page = $processedQueryParams["page"] ?? self::DEFAULT_PAGE;
-        $results_per_page = $processedQueryParams["results_per_page"] >> self::DEFAULT_RESULTS_PER_PAGE;
+        $results_per_page = $processedQueryParams["results_per_page"] ?? self::DEFAULT_RESULTS_PER_PAGE;
+        $offset = $results_per_page * ($page - 1);
 
-        $listings = $listingsQuery->skip($results_per_page * ($page - 1))->take($results_per_page)->get();
+        $listings = $listingsQuery->skip($offset)->take($results_per_page)->get();
 
-        if (isset($processedQueryParams["photos_only"])) {
-            //
+        // TODO I'm sure there's a more 'eloquent' way to perform this step in a single query
+        if (isset($processedQueryParams["photos_only"]) && $processedQueryParams["photos_only"]) {
+            return response($listings->pluck('photos'), 206);
         }
 
-        return $listings;
+        if (!(count($listings) > 0)) {
+            return response("", 404);
+        }
+
+        return response($listings, 206);
     }
 }
