@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePhotosTable extends Migration
+class AddFkPhotosListingidToListings extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,8 @@ class CreatePhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('photos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('listing_id')->unsigned();
-            $table->dateTime('media_modification_timestamp');
-            $table->string('media_url');
+        Schema::table('photos', function ($table) {
+            $table->foreign('listing_id')->references('id')->on('listings')->onDelete('cascade');
         });
     }
 
@@ -27,6 +24,8 @@ class CreatePhotosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('photos');
+        Schema::table('photos', function ($table) {
+            $table->dropForeign('photos_listing_id_foreign');
+        });
     }
 }

@@ -25,7 +25,7 @@ class Listing extends Model implements XmlDeserializable
     public $ListingCategory;
     public $ListingIsActive;
     public $Photos;
-    public $DiscloseAddress;  //nullable
+    public $DiscloseAddress;
     public $ListingDescription;
     public $MlsId;
     public $MlsName;
@@ -67,7 +67,6 @@ class Listing extends Model implements XmlDeserializable
 
         $keyValues = Deserializer\keyValue($reader, self::SAMPLE_DATA_DEFAULT_NS);
 
-        var_dump($keyValues);
         // Map ListingStatus from XML API to proper boolean representation in the database
         if (isset($keyValues['ListingStatus'])) {
             $keyValues['ListingIsActive'] = (strcasecmp('active', $keyValues['ListingStatus']) === 0);

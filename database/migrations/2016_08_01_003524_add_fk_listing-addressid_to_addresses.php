@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateListingsTable extends Migration
+class AddFkListingAddressidToAddresses extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,8 @@ class CreateListingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('listings', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::table('listings', function ($table) {
+            $table->foreign('address_id')->references('id')->on('addresses');
         });
     }
 
@@ -25,6 +24,8 @@ class CreateListingsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('listings');
+        Schema::table('listings', function ($table) {
+            $table->dropForeign('listings_address_id_foreign');
+        });
     }
 }
