@@ -21,6 +21,19 @@ class Listing extends Model implements XmlDeserializable
         return $this->hasMany(Photo::class);
     }
 
+    // required to properly represent the value in JSON
+    public function getListingIsActiveAttribute($value) {
+        return (boolean) $value;
+    }
+
+    // required to properly represent the value in JSON
+    public function getDiscloseAddressAttribute($value) {
+        if (!is_null($value)) {
+            return (boolean) $value;
+        }
+
+        return null;
+    }
     /**
      * The deserialize method is called during xml parsing.
      *

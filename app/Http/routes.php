@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/listings', 'ListingController@GetAllListings');
+Route::get('/listings/{id}', 'ListingController@GetFullListingAtId');
+Route::put('/listings/{id}/toggle_activation', "ListingController@ToggleActivationOnListingAtId");

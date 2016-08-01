@@ -34,9 +34,7 @@ class ListingsRouteTest extends TestCase
          * The returned JSON object contains nested address objects for each listing
          */
         $this->get('/listings')->seeJson([
-            "address" => [
-                "full_street_address" => "2251 58 Street"
-            ]
+            "full_street_address" => '2251 58 Street'
         ]);
     }
 
@@ -82,7 +80,7 @@ class ListingsRouteTest extends TestCase
         $initialState = $this->get('/listings/1')->decodeResponseJson()['listing_is_active'];
 
         $response = $this->put('/listings/1/toggle_activation');
-        $response->seeStatusCode(201);
+        $response->seeStatusCode(200);
         $response->seeJson([
             "listing_is_active" => !$initialState
         ]);

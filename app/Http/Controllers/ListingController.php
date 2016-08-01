@@ -24,5 +24,37 @@ class ListingController extends Controller
         }
 
         $returnedListing->save();
+
+        return $returnedListing;
+    }
+
+    public function GetAllListings() {
+        return Listing::with('address', 'photos')->get();
+    }
+
+    public function GetFullListingAtId($id) {
+        $listing = Listing::with('address', 'photos')->find($id);
+
+        if (is_null($listing)) {
+            return response("", 404);
+        }
+
+        return $listing;
+    }
+
+    public function ToggleActivationOnListingAtId($id) {
+        $listing = Listing::find($id);
+
+        if (is_null($listing)) {
+            return response("", 404);
+        }
+
+        if (isset($listing->listing_is_active)) {
+            $listing->listing_is_active = !($listing->listing_is_active);
+        }
+
+        $listing->save();
+
+        return $this->GetFullListingAtId($listing->id);
     }
 }

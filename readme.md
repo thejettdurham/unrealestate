@@ -58,7 +58,7 @@ The endpoint also returns the representation of the affected listing as a JSON o
 - **URL** `/listings/:id/toggle_activation`
 - **Method** `PUT`
 - **Success Response**
-  - **Code**: 201
+  - **Code**: 200
   - **Content**: `{ <Listing> }`
 - **Error Responses**
   - _No Listing for id_
