@@ -12,6 +12,11 @@ class Address extends Model implements XmlDeserializable
     const SAMPLE_DATA_ADDRESS_NS = 'http://rets.org/xsd/RETSCommons';
 
     public $timestamps = false;
+    public $guarded = ['listing_id'];
+
+    public function listing() {
+        return $this->belongsTo(Listing::class);
+    }
 
     /**
      * The deserialize method is called during xml parsing.

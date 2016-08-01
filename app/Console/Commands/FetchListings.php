@@ -3,6 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Address;
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\ListingController;
+use App\Http\Controllers\PhotoController;
 use App\Listing;
 use App\Photo;
 use Illuminate\Console\Command;
@@ -51,35 +54,14 @@ class FetchListings extends Command
     {
         echo "Fetching new listings..." . PHP_EOL;
 
-        try {
-            /**
-             * It's unclear whether the fetched listings are new listings or should be added to the application's existing
-             * listings. Therefore, to simplify this implementation, I am deleting all the existing listings in the app's
-             * database, and replacing them entirely with the fetched listings.
-             */
-            $this->DeleteSavedListings();
+        $listingsXml = $this->FetchListingsAsXml();
+        $listings = $this->ParseListingsFromXml($listingsXml);
 
-            $listingsXml = $this->FetchListingsAsXml();
-            $listings = $this->ParseListingsFromXml($listingsXml);
+        $this->UpsertListings($listings);
+        //TODO: Remove listings in app's database but not in $listings(?)
 
-            $this->AddNewListings($listings);
-
-            echo "Fetching new listings successful";
-            exit(0);
-
-        } catch (\Throwable $t) {
-            echo "Encountered fatal error when fetching new listings" . PHP_EOL;
-            print_r($t);
-            exit(1);
-        }
-    }
-
-    /**
-     * Deletes all saved listings
-     *
-     * @return void
-     */
-    private function DeleteSavedListings(){
+        echo "Fetching new listings successful";
+        exit(0);
 
     }
 
@@ -94,8 +76,13 @@ class FetchListings extends Command
         return file_get_contents(storage_path(self::SAMPLE_DATA_SOURCE));
     }
 
-    // todo: make private
-    public static function ParseListingsFromXml($listingsXml) : array
+    /**
+     * Parses out an array of Listing objects from the given source XML string
+     *
+     * @param string $listingsXml
+     * @return array of Listing
+     */
+    private function ParseListingsFromXml(string $listingsXml) : array
     {
         // Used sabre/xml to parse the XML (http://sabre.io/xml)
         $service = new Service();
@@ -112,6 +99,43 @@ class FetchListings extends Command
         ];
 
         return $service->parse($listingsXml);
+    }
+
+    /**
+     * Upserts a given array of Listings and all nested models into the app's database.
+     * Only changed records are modified.
+     *
+     * @param array $listings
+     */
+    private function UpsertListings(array $listings)
+    {
+        foreach($listings as $listing) {
+
+            /**
+             * Break Address and Photos into their own variables such that Listing can be smoothly inserted into database.
+             * The Address and Photos will be inserted on their own through the Listing's relation methods
+             */
+            if (isset($listing->address)) {
+                $address = $listing->address;
+                unset($listing->address);
+            }
+
+            if (isset($listing->photos)) {
+                $photos = $listing->photos;
+                unset($listing->photos);
+            }
+
+            $listing = ListingController::UpsertListing($listing);
+
+            if (isset($address)) {
+                AddressController::UpsertAddressForListing($address, $listing);
+            }
+
+            if (isset($photos)) {
+                foreach($photos as $photo)
+                PhotoController::UpsertPhotoForListing($photo, $listing);
+            }
+        }
     }
 
 }

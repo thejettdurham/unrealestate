@@ -12,6 +12,11 @@ class Photo extends Model implements XmlDeserializable
     const SAMPLE_DATA_DEFAULT_NS = 'http://rets.org/xsd/Syndication/2012-03';
 
     public $timestamps = false;
+    public $guarded = ['listing_id'];
+
+    public function listing() {
+        return $this->belongsTo(Listings::class);
+    }
 
     /**
      * The deserialize method is called during xml parsing.
@@ -42,6 +47,12 @@ class Photo extends Model implements XmlDeserializable
 
         if (isset($keyValues['MediaModificationTimestamp'])) {
             $keyValues['MediaModificationTimestamp'] = trim($keyValues['MediaModificationTimestamp']);
+        }
+
+        // Fix attribute casing
+        if (isset($keyValues['MediaURL'])) {
+            $keyValues['MediaUrl'] = $keyValues['MediaURL'];
+            unset($keyValues['MediaURL']);
         }
 
         foreach(array_keys($keyValues) as $key) {

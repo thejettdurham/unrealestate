@@ -12,8 +12,8 @@ class AddFkListingAddressidToAddresses extends Migration
      */
     public function up()
     {
-        Schema::table('listings', function ($table) {
-            $table->foreign('address_id')->references('id')->on('addresses');
+        Schema::table('addresses', function ($table) {
+            $table->foreign('listing_id')->references('id')->on('listings');
         });
     }
 
@@ -24,8 +24,8 @@ class AddFkListingAddressidToAddresses extends Migration
      */
     public function down()
     {
-        Schema::table('listings', function ($table) {
-            $table->dropForeign('listings_address_id_foreign');
+        Schema::table('addresses', function ($table) {
+            $table->dropForeign('addresses_listing_id_foreign');
         });
     }
 }

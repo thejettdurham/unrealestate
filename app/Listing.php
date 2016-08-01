@@ -1,9 +1,6 @@
 <?php
 
 namespace App;
-
-use App\Address;
-use App\Photo;
 use Illuminate\Database\Eloquent\Model;
 use Sabre\Xml\Deserializer;
 use Sabre\Xml\Reader;
@@ -14,6 +11,7 @@ class Listing extends Model implements XmlDeserializable
     const SAMPLE_DATA_DEFAULT_NS = 'http://rets.org/xsd/Syndication/2012-03';
 
     public $timestamps = false;
+    public $guarded = [];
 
     public function address() {
         return $this->hasOne(Address::class);
@@ -54,6 +52,11 @@ class Listing extends Model implements XmlDeserializable
         if (isset($keyValues['ListingStatus'])) {
             $keyValues['ListingIsActive'] = (strcasecmp('active', $keyValues['ListingStatus']) === 0);
             unset($keyValues['ListingStatus']);
+        }
+
+        if (isset($keyValues['ListingURL'])) {
+            $keyValues['ListingUrl'] = $keyValues['ListingURL'];
+            unset($keyValues['ListingURL']);
         }
 
         foreach(array_keys($keyValues) as $key) {

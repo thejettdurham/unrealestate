@@ -14,7 +14,6 @@ class CreateListingsTable extends Migration
     {
         Schema::create('listings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('address_id')->unsigned();
             $table->bigInteger('list_price')->unsigned();
             $table->string('listing_url');
             $table->integer('bedrooms')->unsigned();
