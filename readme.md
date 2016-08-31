@@ -2,8 +2,6 @@
 
 Unreal Estate is a simple RESTful web app that allows the user to find Real Estate listings they might be interested in. Unreal Estate is built on Laravel 5 and PHP 7.
 
-A live demo is available [here](http://unrealestate.jettdurham.com) for quick review.
-
 ## Listing Updates
 
 The application maintains its own database of real estate listings. These listings are updated daily (2:00AM EST) from an external source.
